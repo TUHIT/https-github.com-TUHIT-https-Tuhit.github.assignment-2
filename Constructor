@@ -1,0 +1,104 @@
+import javafx.geometry.Point2D;
+ 
+public class Point2D_1 {
+ 
+    // Main Method
+    public static void main(String args[])
+    {
+ 
+        // Create a point2D object
+        Point2D point2d_1 = new Point2D(20.0f, 150.0f);
+ 
+        double x, y;
+ 
+        // get the coordinates of the point
+        x = point2d_1.getX();
+        y = point2d_1.getY();
+ 
+        // display the coordinates of the point
+        System.out.println("x coordinate = " + x
+                      + ", y coordinate = " + y);
+ 
+        // print its distance from origin
+        System.out.println("distance from origin = "
+                        + point2d_1.distance(0, 0));
+    }
+}
+
+
+public class Point {
+	private double x, y;  
+	
+	// Constructors
+	// given x, y create a new point
+	public Point(double x, double y){
+		this.x=x;  //use 'this' to clear ambiguity in vars
+		this.y=y;
+	}
+	
+	// no parameters passed, create point at origin 0,0
+	public Point(){
+		x=0;
+		y=0;
+	}
+
+	/* move point by xShift and yShift amounts 
+  */
+	public void shift(double xShift, double yShift){
+		this.x=this.x+xShift;
+		this.y=this.y+yShift;
+	}
+  
+    public class PolarPoint 
+ {
+ 	double theta;
+  	double radius;
+  	
+  	/**
+  	 * Creates a new instance with radius and angle each 0.
+     */
+ 	public PolarPoint() {
+  		this(0,0);
+  	}
+  
+ 	/**
+  	 * Creates a new instance with radius {@code radius} and angle {@code theta}.
+  	 */
+  	public PolarPoint(double theta, double radius) {
+ 		this.theta = theta;
+  		this.radius = radius;
+  	}
+ 	
+  	/**
+ 	 * Returns the angle for this point.
+  	 */
+  	public double getTheta() { return theta; }
+  
+  	/**
+  	 * Returns the radius for this point.
+  	 */
+  	public double getRadius() { return radius; }
+  	
+  	/**
+ 	 * Sets the angle for this point to {@code theta}.
+  	 */
+ 	public void setTheta(double theta) { this.theta = theta; }
+  	
+  	/**
+ 	 * Sets the radius for this point to {@code theta}.
+  	 */
+  	public void setRadius(double radius) { this.radius = radius; }
+  
+  	/**
+  	 * Returns the result of converting <code>polar</code> to Cartesian coordinates.
+  	 */
+  	public static Point2D polarToCartesian(PolarPoint polar) {
+  		return polarToCartesian(polar.getTheta(), polar.getRadius());
+  	}
+  
+ 	/**
+ 	 * Returns the result of converting <code>(theta, radius)</code> to Cartesian coordinates.
+  	 */
+  	public static Point2D polarToCartesian(double theta, double radius) {
+  		return new Point2D.Double(radius*Math.cos(theta), radius*Math.sin(theta));
+  	}
